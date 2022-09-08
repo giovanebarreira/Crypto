@@ -50,7 +50,7 @@ import Foundation
  },
  */
 
-struct Coin: Identifiable, Codable {
+struct CoinModel: Identifiable, Codable {
 	let id, symbol, name: String
 	let image: String
 	let currentPrice: Double
@@ -97,8 +97,8 @@ struct Coin: Identifiable, Codable {
 		case currentHoldings
 	}
 	
-	func updateHoldings(amount: Double) -> Coin {
-		return Coin(
+	func updateHoldings(amount: Double) -> CoinModel {
+		return CoinModel(
 			id: id,
 			symbol: symbol,
 			name: name,

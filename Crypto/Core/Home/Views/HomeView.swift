@@ -10,16 +10,23 @@ import SwiftUI
 struct HomeView: View {
 	@EnvironmentObject private var vm: HomeViewModel
 	@State private var showPortifolio: Bool = false
+	@State private var showPortifolioView: Bool = false
 	
 	var body: some View {
 		ZStack {
 			// background layer
 			Color.theme.background
 				.ignoresSafeArea()
+				.sheet(isPresented: $showPortifolioView) {
+					PortifolioView()
+						.environmentObject(vm)
+				}
 			
 			// content layer
 			VStack {
 				homeHeader
+				HomeStatsView(showPortifolio: $showPortifolio)
+				SearchBarView(searchText: $vm.searchText)
 			
 				columnTitles
 			
@@ -41,6 +48,11 @@ struct HomeView: View {
 		HStack {
 			CircleButtonView(iconName: showPortifolio ? "plus" : "info")
 				.animation(.none, value: showPortifolio)
+				.onTapGesture {
+					if showPortifolio {
+						showPortifolioView.toggle()
+					}
+				}
 				.background(
 					CircleButtonAnimationView(animate: $showPortifolio)
 				)
@@ -91,6 +103,16 @@ struct HomeView: View {
 			}
 			Text("Price")
 				.frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+			
+			Button {
+				withAnimation(.linear(duration: 2.0)) {
+					vm.reloadData()
+				}
+			} label: {
+				Image(systemName: "goforward")
+			}
+			.rotationEffect(Angle(degrees: vm.isLoading ? 360 : 0), anchor: .center)
+
 		}
 		.font(.caption)
 		.foregroundColor(Color.theme.secondaryText)
@@ -107,6 +129,3 @@ struct HomeView_Previews: PreviewProvider {
 		.environmentObject(dev.homeVM)
 	}
 }
-
-
-// NExt video is 7
