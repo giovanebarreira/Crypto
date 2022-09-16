@@ -26,6 +26,10 @@ struct PortifolioView: View {
 					}
 				}
 			}
+			.background(
+				Color.theme.background
+					.ignoresSafeArea()
+			)
 			.navigationTitle("Edit Portifolio")
 			.toolbar {
 				ToolbarItem(placement: .navigationBarLeading) {
@@ -58,7 +62,7 @@ extension PortifolioView {
 	private var coinLogoList: some View {
 		ScrollView(.horizontal, showsIndicators: false) {
 			LazyHStack(spacing: 10) {
-				ForEach(vm.searchText.isEmpty ? vm.portifolioCoins : vm.allCoins) { coin in
+				ForEach(vm.searchText.isEmpty ? vm.portfolioCoins : vm.allCoins) { coin in
 					CoinLogoView(coin: coin)
 						.frame(width: 75)
 						.padding(4)
@@ -83,7 +87,7 @@ extension PortifolioView {
 	private func updateSelectedCoins(coin: CoinModel) {
 		selectedCoin = coin
 		
-		if let portfolioCoins = vm.portifolioCoins.first(where: { $0.id == coin.id }),
+		if let portfolioCoins = vm.portfolioCoins.first(where: { $0.id == coin.id }),
 			 let amount = portfolioCoins.currentHoldings {
 				quantityText = "\(amount)"
 		} else {

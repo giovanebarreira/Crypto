@@ -9,8 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
 	@EnvironmentObject private var vm: HomeViewModel
-	@State private var showPortifolio: Bool = false
-	@State private var showPortifolioView: Bool = false
+	@State private var showPortfolio: Bool = false // animate right
+	@State private var showPortifolioView: Bool = false // new sheet
+	@State private var showSettingsView: Bool = false // new sheet
+	@State private var selectedCoin: CoinModel? = nil
+	@State private var showDetailView: Bool = false
 	
 	var body: some View {
 		ZStack {
@@ -25,49 +28,66 @@ struct HomeView: View {
 			// content layer
 			VStack {
 				homeHeader
-				HomeStatsView(showPortifolio: $showPortifolio)
+				HomeStatsView(showPortifolio: $showPortfolio)
 				SearchBarView(searchText: $vm.searchText)
-			
+				
 				columnTitles
-			
-				if !showPortifolio {
+				
+				if !showPortfolio {
 					allCoinsList
-					.transition(.move(edge: .leading))
+						.transition(.move(edge: .leading))
 				}
-				if showPortifolio {
-					portifolioCoinsList
-						.transition(.move(edge: .trailing))
+				if showPortfolio {
+					ZStack(alignment: .top) {
+						if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
+							portfolioEmptyText
+						} else {
+							portfolioCoinsList
+						}
+					}
+					.transition(.move(edge: .trailing))
 				}
 				
 				Spacer(minLength: 0)
 			}
+			.sheet(isPresented: $showSettingsView) {
+				SettingsView()
+			}
 		}
+		.background(
+			NavigationLink(
+				destination: DetailLoadingView(coin: $selectedCoin),
+				isActive: $showDetailView,
+				label: { EmptyView() })
+		)
 	}
 	
 	private var homeHeader: some View {
 		HStack {
-			CircleButtonView(iconName: showPortifolio ? "plus" : "info")
-				.animation(.none, value: showPortifolio)
+			CircleButtonView(iconName: showPortfolio ? "plus" : "info")
+				.animation(.none, value: showPortfolio)
 				.onTapGesture {
-					if showPortifolio {
+					if showPortfolio {
 						showPortifolioView.toggle()
+					} else {
+						showSettingsView.toggle()
 					}
 				}
 				.background(
-					CircleButtonAnimationView(animate: $showPortifolio)
+					CircleButtonAnimationView(animate: $showPortfolio)
 				)
 			Spacer()
-			Text(showPortifolio ? "Portifolio" : "Live Prices")
+			Text(showPortfolio ? "Portifolio" : "Live Prices")
 				.font(.headline)
 				.fontWeight(.heavy)
 				.foregroundColor(Color.theme.accent)
-				.animation(.none, value: showPortifolio)
+				.animation(.none, value: showPortfolio)
 			Spacer()
 			CircleButtonView(iconName: "chevron.right")
-				.rotationEffect(Angle(degrees: showPortifolio ? 180 : 0))
+				.rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
 				.onTapGesture {
 					withAnimation(.spring()) {
-						showPortifolio.toggle()
+						showPortfolio.toggle()
 					}
 				}
 		}
@@ -79,30 +99,85 @@ struct HomeView: View {
 			ForEach(vm.allCoins) { coin in
 				CoinRowView(coin: coin, showHoldingsColumn: false)
 					.listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 10))
+					.onTapGesture {
+						segue(coin: coin)
+					}
+					.listRowBackground(Color.theme.background)
 			}
 		}
 		.listStyle(.plain)
 	}
 	
-	private var portifolioCoinsList: some View {
+	private var portfolioCoinsList: some View {
 		List {
-			ForEach(vm.portifolioCoins) { coin in
+			ForEach(vm.portfolioCoins) { coin in
 				CoinRowView(coin: coin, showHoldingsColumn: true)
 					.listRowInsets(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 10))
+					.onTapGesture {
+						segue(coin: coin)
+					}
+					.listRowBackground(Color.theme.background)
 			}
 		}
 		.listStyle(.plain)
+	}
+	
+	private var portfolioEmptyText: some View {
+		Text("You haven't added any coins to your portfolio yet. Click the + button to get started.")
+			.font(.callout)
+			.foregroundColor(Color.theme.accent)
+			.fontWeight(.medium)
+			.multilineTextAlignment(.center)
+			.padding(50)
+	}
+	
+	private func segue(coin: CoinModel) {
+		selectedCoin = coin
+		showDetailView.toggle()
 	}
 	
 	private var columnTitles: some View {
 		HStack {
-			Text("Coin")
-			Spacer()
-			if showPortifolio {
-				Text("Holdings")
+			HStack(spacing: 4) {
+				Text("Coin")
+				Image(systemName: "chevron.down")
+					.opacity((vm.sortOption == .rank || vm.sortOption == .rankReversed)
+									 ? 1.0 : 0.0 )
+					.rotationEffect(Angle(degrees: vm.sortOption == .rank ? 0 : 180))
 			}
-			Text("Price")
-				.frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+			.onTapGesture {
+				withAnimation(.default ) {
+					vm.sortOption = vm.sortOption == .rank ? .rankReversed : .rank
+				}
+			}
+			Spacer()
+			if showPortfolio {
+				HStack(spacing: 4) {
+					Text("Holdings")
+					Image(systemName: "chevron.down")
+						.opacity((vm.sortOption == .holdings || vm.sortOption == .holdingsReversed)
+										 ? 1.0 : 0.0 )
+						.rotationEffect(Angle(degrees: vm.sortOption == .holdings ? 0 : 180))
+				}
+				.onTapGesture {
+					withAnimation(.default ) {
+						vm.sortOption = vm.sortOption == .holdings ? .holdingsReversed : .holdings
+					}
+				}
+			}
+			HStack(spacing: 4) {
+				Text("Price")
+				Image(systemName: "chevron.down")
+					.opacity((vm.sortOption == .price || vm.sortOption == .priceReversed)
+									 ? 1.0 : 0.0 )
+					.rotationEffect(Angle(degrees: vm.sortOption == .price ? 0 : 180))
+			}
+			.frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+			.onTapGesture {
+				withAnimation(.default ) {
+					vm.sortOption = vm.sortOption == .price ? .priceReversed : .price
+				}
+			}
 			
 			Button {
 				withAnimation(.linear(duration: 2.0)) {
@@ -112,7 +187,7 @@ struct HomeView: View {
 				Image(systemName: "goforward")
 			}
 			.rotationEffect(Angle(degrees: vm.isLoading ? 360 : 0), anchor: .center)
-
+			
 		}
 		.font(.caption)
 		.foregroundColor(Color.theme.secondaryText)
