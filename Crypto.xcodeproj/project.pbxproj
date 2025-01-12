@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		600769042D343CEC00B4808F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 600769032D343CEC00B4808F /* Assets.xcassets */; };
 		6015E2B428CA06F6005447EB /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6015E2B328CA06F6005447EB /* HapticManager.swift */; };
 		6033256628C20EF10010BEFF /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033256528C20EF10010BEFF /* SearchBarView.swift */; };
 		6033256828C212AF0010BEFF /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6033256728C212AF0010BEFF /* UIApplication.swift */; };
@@ -36,7 +37,6 @@
 		60AD4DCE28C6166400D824D2 /* CoinLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AD4DCD28C6166400D824D2 /* CoinLogoView.swift */; };
 		60B62AFF28BE1BF3009134B4 /* CryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B62AFE28BE1BF3009134B4 /* CryptoApp.swift */; };
 		60B62B0628BE1BF6009134B4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60B62B0528BE1BF6009134B4 /* Preview Assets.xcassets */; };
-		60B62B0D28BE1D01009134B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60B62B0C28BE1D01009134B4 /* Assets.xcassets */; };
 		60B62B1028BE1D6D009134B4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B62B0F28BE1D6D009134B4 /* Colors.swift */; };
 		60B62B1628BE1EDC009134B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B62B1528BE1EDC009134B4 /* HomeView.swift */; };
 		60B62B1A28BE1FAF009134B4 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B62B1928BE1FAF009134B4 /* CircleButtonView.swift */; };
@@ -51,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		600769032D343CEC00B4808F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6015E2B328CA06F6005447EB /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		6033256528C20EF10010BEFF /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		6033256728C212AF0010BEFF /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -81,7 +82,6 @@
 		60B62AFB28BE1BF3009134B4 /* Crypto Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B62AFE28BE1BF3009134B4 /* CryptoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoApp.swift; sourceTree = "<group>"; };
 		60B62B0528BE1BF6009134B4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		60B62B0C28BE1D01009134B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../Downloads/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		60B62B0F28BE1D6D009134B4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		60B62B1528BE1EDC009134B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		60B62B1928BE1FAF009134B4 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 				603F82E128BF7D9700CD9A1A /* Services */,
 				60B62B1D28BE254B009134B4 /* Models */,
 				60B62B1128BE1EB1009134B4 /* Core */,
-				60B62B0C28BE1D01009134B4 /* Assets.xcassets */,
+				600769032D343CEC00B4808F /* Assets.xcassets */,
 				60B62B0428BE1BF6009134B4 /* Preview Content */,
 			);
 			path = Crypto;
@@ -382,7 +382,7 @@
 			files = (
 				606F866228D3457700CD6969 /* LaunchScreen.storyboard in Resources */,
 				60B62B0628BE1BF6009134B4 /* Preview Assets.xcassets in Resources */,
-				60B62B0D28BE1D01009134B4 /* Assets.xcassets in Resources */,
+				600769042D343CEC00B4808F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
