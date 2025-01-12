@@ -27,25 +27,12 @@ Screenshots:
   <img src="Screenshots/Screenshot6.png" width="32%" alt="Screenshot 6" style="margin: 0.5%;">
 </div>
 
+Demo Video:
 
 
-Key improvements:
 
-flex-wrap: wrap;: This crucial addition allows the images to wrap onto the next line when the screen is too narrow to fit all three side-by-side. This creates the 3x3 grid you're looking for, adapting to different screen sizes.
-margin: 0.5%;: This provides a consistent margin around all sides of each image, making the layout cleaner and more balanced.
+https://github.com/user-attachments/assets/8f226664-dfb4-4b2d-a8ae-0fb634189d0f
 
-Explanation:
-
-The display: flex and flex-wrap: wrap combination creates a responsive grid layout.
-width="32%" sets each image's width to approximately one-third of the container, allowing three images per row on larger screens.
-margin: 0.5% adds a small margin around each image for spacing.
-Replace "screenshots/screenshot1.png", etc., with the actual paths to your screenshot images. Make sure the screenshots folder (or wherever your images are) is in the correct place relative to your README file.
-
-This improved code will display your screenshots in a 3x3 grid on larger screens and gracefully wrap them onto multiple rows on smaller screens, ensuring a good viewing experience on any device. Remember to replace the placeholder image paths with your actual file paths.
-
-  
-
-Demo Video
 
 Tech Stack:
 
