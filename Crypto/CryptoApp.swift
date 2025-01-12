@@ -30,7 +30,6 @@ struct CryptoApp: App {
 				.navigationViewStyle(.stack)
 				.environmentObject(vm)
 				
-				// Workaround to not mess with zIndex in launch animation
 				ZStack {
 					if showLaunchView {
 						LaunchView(showLaunchView: $showLaunchView)

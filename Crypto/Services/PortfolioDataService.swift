@@ -11,7 +11,7 @@ import CoreData
 class PortfolioDataService {
 	private let container: NSPersistentContainer
 	private let containerName: String = "PortfolioContainer"
-	private let entityName: String = "PortfolioEntity" // do not user suffix entity
+	private let entityName: String = "PortfolioEntity"
 	
 	@Published var savedEntities: [PortfolioEntity] = []
 	
@@ -27,7 +27,6 @@ class PortfolioDataService {
 	
 	// MARK: - Public
 	func updatePortfolio(coin: CoinModel, amount: Double) {
-		// check if coin is already in portfolio
 		if let entity = savedEntities.first(where: { $0.coinID == coin.id }) {
 			if amount > 0 {
 				update(entity: entity, amount: amount)

@@ -6,50 +6,6 @@
 //
 
 import Foundation
-//Coingecko API Info
-/*
- URL:
- https://api.coingecko.com/api/v3/coins/markets?vs_currency=brl&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h
- 
- Json response
- 
- {
- "id": "bitcoin",
- "symbol": "btc",
- "name": "Bitcoin",
- "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
- "current_price": 102726,
- "market_cap": 1965897171820,
- "market_cap_rank": 1,
- "fully_diluted_valuation": 2157331472890,
- "total_volume": 142544383795,
- "high_24h": 103224,
- "low_24h": 100256,
- "price_change_24h": 2446.64,
- "price_change_percentage_24h": 2.43984,
- "market_cap_change_24h": 44905479540,
- "market_cap_change_percentage_24h": 2.33762,
- "circulating_supply": 19136531,
- "total_supply": 21000000,
- "max_supply": 21000000,
- "ath": 380542,
- "ath_change_percentage": -73.00555,
- "ath_date": "2021-11-09T04:09:45.771Z",
- "atl": 149.66,
- "atl_change_percentage": 68539.74528,
- "atl_date": "2013-07-05T00:00:00.000Z",
- "roi": null,
- "last_updated": "2022-08-30T11:12:24.818Z",
- "sparkline_in_7d": {
- "price": [
- 21027.824239483318,
- 21054.12747607194,
- ]
- },
- "price_change_percentage_24h_in_currency": 2.439835619894343
- },
- */
-
 struct CoinModel: Identifiable, Codable {
 	let id, symbol, name: String
 	let image: String
