@@ -19,12 +19,12 @@ Haptic Feedback: Engage with subtle vibrations for a more immersive experience. 
 Screenshots:
 
 <div style="display: flex; flex-wrap: wrap;">
-  <img src="Screenshots/screenshot1.png" width="32%" alt="Screenshot 1" style="margin: 0.5%;">
-  <img src="Screenshots/screenshot2.png" width="32%" alt="Screenshot 2" style="margin: 0.5%;">
-  <img src="Screenshots/screenshot3.png" width="32%" alt="Screenshot 3" style="margin: 0.5%;">
-  <img src="Screenshots/screenshot4.png" width="32%" alt="Screenshot 4" style="margin: 0.5%;">
-  <img src="Screenshots/screenshot5.png" width="32%" alt="Screenshot 5" style="margin: 0.5%;">
-  <img src="Screenshots/screenshot6.png" width="32%" alt="Screenshot 6" style="margin: 0.5%;">
+  <img src="Screenshots/Screenshot1.png" width="32%" alt="Screenshot 1" style="margin: 0.5%;">
+  <img src="Screenshots/Screenshot2.png" width="32%" alt="Screenshot 2" style="margin: 0.5%;">
+  <img src="Screenshots/Screenshot3.png" width="32%" alt="Screenshot 3" style="margin: 0.5%;">
+  <img src="Screenshots/Screenshot4.png" width="32%" alt="Screenshot 4" style="margin: 0.5%;">
+  <img src="Screenshots/Screenshot5.png" width="32%" alt="Screenshot 5" style="margin: 0.5%;">
+  <img src="Screenshots/Screenshot6.png" width="32%" alt="Screenshot 6" style="margin: 0.5%;">
 </div>
 
 
